@@ -16,44 +16,41 @@
         </form>
       </div>
 
-      <div class="bg-white m-2  rounded-2xl border-4 border-black relative" id="days" v-for="(day, index) in weatherInfo" :key="day">
-        
-        <h1 class="relative top-1 left-2 text-xl sm:absolute">{{getDayNum(index)}} {{getMonthNum()}} {{getDayName(index)}}</h1>
+      <div class="m-2 rounded-2xl border-4 border-black relative overflow-hidden" style="background: white;" id="days" v-for="(day, index) in weatherInfo" :key="day">
+        <h1 class="relative top-1 left-2 text-xl md:absolute m-2 z-10">{{getDayNum(index)}} {{getMonthNum()}} {{getDayName(index)}}</h1>
 
-          <div class="flex justify-between flex-wrap">
+          <div class="flex justify-between flex-wrap relative">     
 
-        <div class="flex  items-center flex-wrap w-1/5 justify-evenly">
-          <img src="./assets/img/cloud.png" class="w-12 h-12 md:w-16 md:h-16">
-          <p class="text-center">{{getMainWeather(index)}}</p>
+        <div class="flex items-center flex-wrap w-1/4 justify-evenly md:w-1/5 flex-col md:flex-row ">
+          <img src="./assets/img/cloud.png" class="w-10 h-10 md:w-16 md:h-16">
+          <p class="text-center md:text-lg">{{getMainWeather(index)}}</p>
         </div>
 
-        <div class="flex items-center flex-wrap w-1/5 justify-evenly">
+        <div class="flex items-center flex-wrap w-1/4 justify-evenly md:w-1/5 flex-col md:flex-row ">
           <img src="./assets/img/temp.png" class="w-10 h-10 md:w-16 md:h-16">
-          <p class="text-center">{{getTemperature(index)}}</p>
+          <p class="text-center md:text-lg ">{{getTemperature(index)}}</p>
         </div>
 
-        <div class="flex items-center flex-wrap w-1/5 justify-evenly">
+        <div class="flex items-center flex-wrap w-1/4 justify-evenly md:w-1/5 flex-col md:flex-row ">
           <img src="./assets/img/wind.png" class="w-10 h-10 md:w-16 md:h-16">
-          <p class="text-center">{{getWindSpeed(index)}}</p>
+          <p class="text-center md:text-lg">{{getWindSpeed(index)}}</p>
         </div>
 
-        <div class="flex items-center flex-wrap w-1/5 justify-evenly">
+        <div class="flex items-center flex-wrap w-1/4 justify-evenly md:w-1/5 flex-col md:flex-row">
           <img src="./assets/img/rainy.png" class="w-10 h-10 md:w-16 md:h-16">
-          <p class="text-center">{{getDescription(index)}}</p>
+          <p class="text-center md:text-lg">{{getDescription(index)}}</p>
         </div>
 
-        <div class="flex items-center flex-col w-1/5 justify-evenly">
-          <img src="./assets/img/sunrise.png" width="40">
-          <p class="text-center">{{getSunRise(index)}}</p>
+        <div class="flex md:items-center md:flex-col md:w-1/5 md:justify-evenly m-auto items-center">
+          <img src="./assets/img/sunrise.png" width="40" >
+          <p class="text-center md:text-lg ">{{getSunRise(index)}}</p>
 
           <img src="./assets/img/sunset.png" width="40">
-          <p class="text-center">{{getSunSet(index)}}</p>
+          <p class="text-center md:text-lg">{{getSunSet(index)}}</p>
         </div>
           </div>
-
-
-
       </div>
+
       </div>
 
   </body>
@@ -112,7 +109,7 @@ export default {
       return `${new Date().getMonth() + 1}.`
     },
     getTemperature(index){
-      return `${Math.round((this.weatherInfo[index].temp.day - 273)*10)/10} °C`
+      return `${Math.round((this.weatherInfo[index].temp.day - 273)*10)/10}°C`
     },
     getSunRise(index){
       let date = new Date(this.weatherInfo[index].sunrise * 1000)
@@ -129,21 +126,21 @@ export default {
       return formattedTime
     },
     getWindSpeed(index){
-      return `${Math.round(this.weatherInfo[index].wind_speed)} m/s`
+      return `${Math.round(this.weatherInfo[index].wind_speed)}m/s`
     },
     getMainWeather(index){
       let clouds = this.weatherInfo[index].clouds 
       if(clouds < 20){
-        return "azure"
+        return "Azure"
       }else if(clouds < 40){
-        return "clear"
+        return "Clear"
       }else{
-        return "cloudy"
+        return "Cloudy"
       }
     },
     getDescription(index){
       return this.weatherInfo[index].weather[0].main
-    }
+    },
   },
   mounted() {
     this.findCity("Praha")
