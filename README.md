@@ -13,3 +13,7 @@ Vue app which uses the weather api to display weather forecast
     <td>First-Mentionalbe-Project</td>
   </tr>
 </table>
+
+<!---
+"use highlight"
+-->
