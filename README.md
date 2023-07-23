@@ -1,19 +1,4 @@
-# vue-weather2.0.0
+Vue app which uses the weather api to display data.
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+| Tech: | Javascript | Vue | Tailwind |
+| Keywords: | Weather | API | Vue |
